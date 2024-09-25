@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<h1>Bienvenido al servicio de reparación de ropa</h1>
+<a href="{% url 'crear_reparacion' %}" class="btn">Añadir Reparación</a>
+<ul>
+    {% for reparacion in reparaciones %}
+        <li>
+            {{ reparacion.descripcion }} - {{ reparacion.costo }} - {{ reparacion.fecha_reparacion }}
+            <a href="{% url 'editar_reparacion' reparacion.id %}" class="btn">Editar</a>
+            <a href="{% url 'eliminar_reparacion' reparacion.id %}" class="btn">Eliminar</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
